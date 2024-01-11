@@ -1,6 +1,7 @@
 package es.DechrisT.telegrambot;
 
-import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import
+        org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
@@ -79,6 +80,12 @@ public class MultiSessionTelegramBot extends TelegramLongPollingBot {
     public void sendPhotoMessageAsync(String photoKey) {
         SendPhoto photo = createPhotoMessage(photoKey);
         executeAsync(photo);
+    }
+    public void sendPhotoMessageAsync(String photoKey,String text,Map<String, String> buttons) {
+        SendPhoto photo = createPhotoMessage(photoKey);
+        SendMessage message = createMessage(text, buttons);
+        executeAsync(photo);
+        sendApiMethodAsync(message);
     }
 
 
